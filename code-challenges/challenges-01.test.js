@@ -10,9 +10,9 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 
 const addOne = (arr) => {
   // Solution code here...
-  let newArr=[];
-  arr.forEach(val=>{
-    newArr.push(val+1);
+  let newArr = [];
+  arr.forEach(val => {
+    newArr.push(val + 1);
   })
   return newArr
 };
@@ -27,9 +27,9 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 const addExclamation = (arr) => {
   // Solution code here...
-  let newArr=[];
-  arr.forEach(val=>{
-    newArr.push(val+'!')
+  let newArr = [];
+  arr.forEach(val => {
+    newArr.push(val + '!')
   })
   return newArr;
 };
@@ -41,9 +41,9 @@ Write a function named `allUpperCase` that takes an array of strings, and return
 
 Use `forEach` to loop over the input array. The modified strings should each be added into a local array. Return that local array.
 ------------------------------------------------------------------------------------------------ */
-const allUpperCase =arr=>{
-  let newArr=[];
-  arr.forEach(val=>{
+const allUpperCase = arr => {
+  let newArr = [];
+  arr.forEach(val => {
     newArr.push(val.toUpperCase());
   })
   return newArr;
@@ -61,14 +61,14 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 
 const greeting = (word) => {
   // Solution code here...
-  return word +'!';
+  return word + '!';
 };
 
 const speaker = (words, callback) => {
   // Solution code here...
-  let newArr=[];
-  words.forEach(val=>{
-    let newItem=callback(val);
+  let newArr = [];
+  words.forEach(val => {
+    let newItem = callback(val);
     newArr.push(newItem.toUpperCase());
   })
   return newArr;
@@ -98,10 +98,18 @@ describe('Testing challenge 5', () => {
 
 const addValues = (arr, value) => {
   // Solution code here...
+
+  arr.push(value)
+  // console.log(arr);
+
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
+  for (let i = 0; i < times; i++) {
+    callback(arr, num)
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,10 +128,28 @@ The inventory is formatted like this:
 ]
 
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
+
+describe('Testing challenge 6', () => {
+  const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
+
+  test('It should only add the available items to the list', () => {
+    expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
+    expect(createList(inventory).length).toStrictEqual(3);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
   // Solution code here...
+  let newArr = [];
+
+  availableItems.forEach(val => {
+    if (val.available) {
+      newArr.push(val.name);
+    }
+
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,10 +164,32 @@ Iterate over the array using forEach to determine the output based on several ru
   - Otherwise, add the number to the output array.
 
 Return the resulting output array.
+xdescribe('Testing challenge 7', () => {
+  const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+
+  test('It should print out messages or numbers', () => {
+    expect(fizzbuzz(inputs)).toStrictEqual([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16]);
+    expect(fizzbuzz(inputs).length).toStrictEqual(16);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  let newArr = [];
+  arr.forEach(val => {
+    if (val % 3 == 0 && val % 5 != 0) {
+      newArr.push('Fizz');
+    } else if (val % 3 != 0 && val % 5 == 0) {
+      newArr.push('Buzz')
+    } else if (val % 3 == 0 && val % 5 == 0) {
+      newArr.push('Fizz Buzz')
+    } else {
+      newArr.push(val)
+    }
+
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -195,7 +243,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
