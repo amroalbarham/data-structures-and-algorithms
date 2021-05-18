@@ -76,10 +76,10 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  let newArr=[];
+  let newArr = [];
   for (let i = 0; i < arr.length; i++) {
-     newArr.push(Math.pow(2, arr[i]));
-    
+    newArr.push(Math.pow(2, arr[i]));
+
   }
   return newArr;
 
@@ -93,8 +93,8 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
-  let newArr=[];
-  arr.forEach(value=>{
+  let newArr = [];
+  arr.forEach(value => {
     newArr.push(Math.pow(2, value))
   })
   return newArr;
@@ -108,7 +108,7 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
-  let power = arr.map(value=>{
+  let power = arr.map(value => {
     return Math.pow(2, value)
   })
   return power
@@ -126,10 +126,10 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
-  // let number = arr.map(value=>{
-  //   return charCode(value)
-  // })
-  // return number
+  let number = arr.map(value=>{
+    return value.charCodeAt(value)
+  })
+  return number
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,6 +144,15 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
+
+  let neaArr=arr.map(value=>{
+    if(value % 2 ==0){
+      return 'even'
+    }else {
+      return 'odd'
+    }
+  })
+  return neaArr ;
 };
 
 /* ------------------------------------------------------------------------------------------------
