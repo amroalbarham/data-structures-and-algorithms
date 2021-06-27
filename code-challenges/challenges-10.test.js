@@ -103,7 +103,7 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
- 
+
   let newArr = [];
   // Solution code here...
   for (let h = 0; h < hoursOpen.length; h++) {
@@ -111,7 +111,7 @@ const grandTotal = (stores) => {
     for (let c = 0; c < stores.length; c++) {
       sum = sum + stores[c][h];
     }
-    newArr.push(sum)
+    newArr.push(sum);
 
   }
   return newArr;
@@ -135,7 +135,7 @@ describe('Testing challenge 5', () => {
 const salesData = (hours, data) => {
   const newArr = [];
   for (let i = 0; i < hours.length; i++) {
-      newArr.push({ sales: `${data[i]} cookies`, time: hours[i] });
+    newArr.push({ sales: `${data[i]} cookies`, time: hours[i] });
   }
   return newArr;
 };
