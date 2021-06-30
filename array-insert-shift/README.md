@@ -4,7 +4,7 @@
 
 ## Whiteboard Process
 
-![code](../pictures/array-insert-shift-1.png)
+![code](../pictures/insertShift-code2.jpg)
 ![whiteboard](../pictures/array-insert-shift-2.jpg)
 ![whiteboard](../pictures/array-insert-shift-3.jpg)
 
