@@ -10,8 +10,8 @@ describe('checks if it includes a value',()=>{
     ll.insert(false);
     ll.insert('c');
     ll.insert('d');
-    // 
   })
+  
   test('includes',()=>{
     let ll = new LinkedLilst();
     ll.insert('a');
