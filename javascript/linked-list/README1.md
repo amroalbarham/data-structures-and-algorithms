@@ -11,11 +11,17 @@
 
 **What approach did you take?**
 
+**insertAfter(),insertBefore(),append**
+
 *write the code first by ***whiel loop*** and then go and make the test*
 
 *big O of time o(n)*
 
 *big O of space o(1)*
 
+
+### whiteboard Process
+
+![code_chall_7](./lab7.png)
 
 
