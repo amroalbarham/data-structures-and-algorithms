@@ -18,10 +18,11 @@
 *big O of time o(n)*
 
 *big O of space o(1)*
-
+ 
+*create linked list to return value from the end*
 
 ### whiteboard Process
 
-![code_chall_7](./lab7.png)
+![code_chall_7](./code-challeng-7.png)
 
 
