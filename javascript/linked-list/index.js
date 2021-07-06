@@ -123,5 +123,23 @@ class LinkedList {
         }
     }
 
+
 }
-module.exports = LinkedList;
+function linkedListzip(list1, list2) {
+    let hand1 = list1.head;
+    let hand2 = list2.head;
+    let ll3 = new LinkedList();
+    while (hand1 || hand2) {
+        if (hand1 != null) {
+            ll3.append(hand1.value);
+            hand1 = hand1.next;
+        }
+        if (hand2 != null) {
+            ll3.append(hand2.value);
+            hand2 = hand2.next;
+        }
+    }
+    return ll3.toString();
+}
+
+module.exports = {LinkedList,linkedListzip};
