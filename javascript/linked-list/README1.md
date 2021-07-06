@@ -20,9 +20,9 @@
 *big O of space o(1)*
  
 *create linked list to return value from the end*
-
+**zip lists Arguments:** *2 linked lists Return: Linked List, zipped as noted below*
 ### whiteboard Process
 
-![code_chall_7](./code-challeng-7.png)
+![code_chall_7](./codeChalleng8.png)
 
 
