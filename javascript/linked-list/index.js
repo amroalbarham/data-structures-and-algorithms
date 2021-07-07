@@ -142,4 +142,41 @@ function linkedListzip(list1, list2) {
     return ll3.toString();
 }
 
-module.exports = {LinkedList,linkedListzip};
+function palindrome(list) {
+    let curr = list.head;
+    let string1 = '';
+    let string2 = '';
+    let cnt = 0;
+    while (curr) {
+        cnt = cnt + 1;
+        string1 = string1 + `${curr.value}`;
+        curr = curr.next;
+    }
+    for (let i = cnt - 1; i > -1; i--) {
+        string2 = string2 + string1[i];
+    }
+    if (string1 == string2) {
+        return true;
+    } else {
+        return false
+    }
+}
+    
+
+function reverselink(list){
+    let curr=list.head;
+    let nextguy;
+    let prev=null;
+    while(curr){
+      nextguy=curr.next;
+      curr.next=prev;
+      prev=curr;
+      curr=nextguy;
+    }
+    list.head=prev;
+    return list;
+  }
+
+
+
+module.exports = { LinkedList, linkedListzip };
