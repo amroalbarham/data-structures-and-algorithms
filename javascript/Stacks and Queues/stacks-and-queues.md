@@ -10,3 +10,6 @@
 **pop():** *the method used to remove nodes or items from the stack you can’t pop an empty stack*
 **top():** *it’s the top of the stack*
 **peek():** *When you peek you will view the value of the top Node in the stack. When you attempt to peek an empty stack an exception will be raised.*
+
+![whiteBorad](./codechalleng11.png)
+
