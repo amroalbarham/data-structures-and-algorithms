@@ -8,17 +8,17 @@ class Node {
 
 class Stack {
     constructor() {
-        this.head = null;
+        this.top = null;
     }
     peek() {
-        if (!this.head) {
+        if (!this.top) {
             try {
                 throw new Error('No empty peek');//cant find the peek of an empty stack
             } catch (e) {
                 return e.message;
             }
         }
-        return this.head.value;
+        return this.top.value;
     }
     push(value) {
         try {
@@ -26,11 +26,11 @@ class Stack {
                 throw new Error(`cannot insert ${value} into the list`);
             }
             let addNode = new Node(value);
-            if (!this.head) {
-                this.head = addNode;
+            if (!this.top) {
+                this.top = addNode;
             } else {
-                addNode.next = this.head;
-                this.head = addNode;
+                addNode.next = this.top;
+                this.top = addNode;
             }
         } catch (e) {
             console.error(e);
@@ -38,11 +38,11 @@ class Stack {
     }
     pop() {
         try {
-            if (!this.head) {
+            if (!this.top) {
                 throw new Error('cant pop off an empty stack');
             }
-            let temp = this.head;
-            this.head = temp.next;
+            let temp = this.top;
+            this.top = temp.next;
             temp.next = null;
             return temp.value;
         } catch (e) {
@@ -50,7 +50,7 @@ class Stack {
         }
     }
     isEmpty() {
-        if (!this.head) {
+        if (!this.top) {
             return true;
         } else {
             return false;
@@ -109,12 +109,36 @@ class Queue {
             return false;
         }
     }
+}
 
 
+
+class PsudoQueue {
+    constructor() {
+        this.stack1 = new Stack();
+        this.stack2 = new Stack();
+    }
+    enqueue(value) {
+        while (this.stack1.top) {
+            this.stack2.push(this.stack1.pop());;
+        }
+        this.stack1.push(value);
+        while (this.stack2.top) {
+            this.stack1.push(this.stack2.pop());
+        }
+    }
+    dequeue() {
+
+        if (!this.stack1.top) {
+            return "psudo queue is empty";
+        }
+        return this.stack1.pop();
+    }
 }
 module.exports = {
     Stack,
     Queue,
+    PsudoQueue
 }
 
-//asdf
+
