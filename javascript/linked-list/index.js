@@ -73,7 +73,7 @@ class LinkedList {
         }
         return outPut;
 
-
+        
     }
     append(value) {
         this.counter = this.counter + 1;
