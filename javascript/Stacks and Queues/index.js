@@ -135,10 +135,50 @@ class PsudoQueue {
         return this.stack1.pop();
     }
 }
+
+class AnimalShelter {
+    constructor() {
+        this.top = null;
+        this.last = null;
+    }
+    enqueue(value) {
+
+        if (value != 'dog' && value != 'cats') {
+            return 'must value: dogs or cats'
+        }
+        try {
+            let node1 = new Node(value);
+            if (!this.top) {
+                this.top = node1;
+                this.last = node1;
+            } else {
+                this.last.next = node1;
+                this.last = node1;
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    dequeue() {
+        try {
+            if (!this.top) {
+                throw new Error('cant dequeue an empty queue');
+            }
+            let temp = this.top;
+            this.top = temp.next;
+            temp.next = null;
+            return temp.value;
+        } catch (e) {
+            return e.message;
+        }
+    }
+}
+
 module.exports = {
     Stack,
     Queue,
-    PsudoQueue
+    PsudoQueue,
+    AnimalShelter
 }
 
 
