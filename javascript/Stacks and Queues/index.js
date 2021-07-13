@@ -174,11 +174,36 @@ class AnimalShelter {
     }
 }
 
+function validateBrackets(input) {
+
+    let store = new Stack();
+    
+    let brackets = '[]{}()<>';
+  
+    for (let bracket = 0; bracket < input.length; bracket++) {
+      let bracketsIndex = brackets.indexOf(input[bracket])
+  
+      if (bracketsIndex === -1) {
+        continue
+      }
+  
+      if (bracketsIndex % 2 === 0) {
+        store.push(bracketsIndex + 1)
+      } else if (store.pop() !== bracketsIndex) {
+          return false;
+      }
+      }
+    return store.isEmpty();
+  }
+
+
+
 module.exports = {
     Stack,
     Queue,
     PsudoQueue,
-    AnimalShelter
+    AnimalShelter,
+    validateBrackets
 }
 
 
