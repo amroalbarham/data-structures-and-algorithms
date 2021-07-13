@@ -18,5 +18,5 @@
 ***Dequeue - Nodes or items that are removed from the queue. If called when the queue is empty an exception will be raised.***
 
 
-![whiteBorad](./codechalle12.png)
+![whiteBorad](./codechal13.png)
 
