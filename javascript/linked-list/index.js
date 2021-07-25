@@ -73,7 +73,7 @@ class LinkedList {
         }
         return outPut;
 
-        
+
     }
     append(value) {
         this.counter = this.counter + 1;
@@ -161,4 +161,42 @@ function alternative(list1, list2) {
     }
     return (list3.toString());
 }
+
+function reverselink(list) {
+    let curr = list.head;
+    let next;
+    let prev = null;
+    while (curr) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    list.head = prev;
+    return list;
+}
+
+function palindrome(list) {
+    let curr = list.head;
+    let string1 = '';
+    let string2 = '';
+    let cnt = 0;
+    while (curr) {
+        cnt = cnt + 1;
+        string1 = string1 + `${curr.data}`;
+        curr = curr.next;
+        // console.log(string1)
+        console.log(cnt)
+    }         //cnt =3
+    for (let i = cnt - 1; i > -1; i--) {
+        string2 = string2 + string1[i];
+    }
+    if (string1 == string2) {
+        return true;
+    } else {
+        return false
+    }
+}   
+
+
 
