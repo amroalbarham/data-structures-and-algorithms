@@ -39,6 +39,7 @@ class BinaryTree {
     _move(this.root);
     return result;
   }
+
   getMaxNumber() {
     if (this.root == null) {
       return ('empty tree');
@@ -54,6 +55,7 @@ class BinaryTree {
     _check(this.root);
     return max;
   }
+
 }
 class BinaryAddSearchTree extends BinaryTree {
   constructor(root) {
@@ -87,15 +89,17 @@ class BinaryAddSearchTree extends BinaryTree {
     _add(node);
   }
 
-  search(value) {
-    let orderList = tree.inOrder()
-    if (orderList.includes(value)) {
-      return true;
-    }
-    else {
-      return false
-    }
-  }
+
+search(value){
+ let orderList= tree.inOrder()
+ if(orderList.includes(value)){
+   return true;
+ }
+ else{
+   return false
+ }
+}
+
 }
 let tree = new BinaryAddSearchTree();
 tree.add(10);
@@ -110,4 +114,10 @@ tree.add(1);
 console.log(tree.inOrder());
 tree.search(1)
 
+*
 module.exports = { Node, BinaryTree, BinaryAddSearchTree }
+
+
+
+
+
