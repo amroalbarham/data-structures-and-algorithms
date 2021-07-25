@@ -5,13 +5,13 @@ const Stack = require('../index').Stack;
 const LinkedList = require('../../linked-list/index').LinkedList;
 
 
-describe('Stack', () => {
+xdescribe('Stack', () => {
     let stack;
     beforeEach(() => {
       stack = new Stack( new LinkedList());
     });
     
-    describe('push', () => {
+    xdescribe('push', () => {
         it('Can successfully push one or multiple onto a stack', () => {
             stack.push(1);
             expect(stack.peek()).toEqual(1);
@@ -21,7 +21,7 @@ describe('Stack', () => {
         });
         
     });
-    describe('pop', () => {
+    xdescribe('pop', () => {
         it('Can successfully pop off the stack', () => {
         stack.push(1);
         stack.push(2);
@@ -34,7 +34,7 @@ describe('Stack', () => {
         expect(stack.peek()).toBe("No empty peek");
     });
     });
-    describe('peek', () => {
+    xdescribe('peek', () => {
         it('Can successfully peek the next item on the stack', () => {
             stack.push(1);
             expect(stack.peek()).toEqual(1);
