@@ -161,22 +161,24 @@ function palindrome(list) {
         return false
     }
 }
-    
 
-function reverselink(list){
-    let curr=list.head;
+
+function reverselink(list) {
+    let curr = list.head;
     let nextguy;
-    let prev=null;
-    while(curr){
-      nextguy=curr.next;
-      curr.next=prev;
-      prev=curr;
-      curr=nextguy;
+    let prev = null;
+    while (curr) {
+        nextguy = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextguy;
     }
-    list.head=prev;
+    list.head = prev;
     return list;
-  }
+}
 
 
 
 module.exports = { LinkedList, linkedListzip };
+
+
