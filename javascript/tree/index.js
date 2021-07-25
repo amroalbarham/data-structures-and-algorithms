@@ -114,7 +114,7 @@ tree.add(1);
 console.log(tree.inOrder());
 tree.search(1)
 
-*
+
 module.exports = { Node, BinaryTree, BinaryAddSearchTree }
 
 
