@@ -1,3 +1,4 @@
+
 const Node = require('../index').Node;
 const BinaryTree = require('../index').BinaryTree;
 const BinaryAddSearchTree = require('../index').BinaryAddSearchTree;

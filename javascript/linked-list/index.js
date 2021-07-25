@@ -1,6 +1,4 @@
 'use strict';
-
-
 class Node {
     constructor(value, next = null) {
         this.value = value;
@@ -11,100 +9,121 @@ class LinkedList {
     constructor() {
         this.head = null;
         this.counter = 0;
+        this.rear = null;
+
     }
+
     insert(value) {
-        this.counter = this.counter + 1;
-        let addNode = new Node(value);
-        if (!this.head) {
-            this.head = addNode;
-        } else {
-            addNode.next = this.head;
-            this.head = addNode;
+        try {
+            this.counter = this.counter + 1;
+            if (value == undefined) {
+                throw new Error(`cannot insert ${value} into the list`);
+            }
+            let addNode = new Node(value);
+            if (!this.head) {
+                this.head = addNode;
+                this.rear = addNode;
+            } else {
+                addNode.next = this.head;
+                this.head = addNode;
+            }
+        } catch (e) {
+            console.error(e);
         }
     }
     includes(value) {
+        try {
+            if (value == undefined) {
+                throw new Error(`cannot check ${value}`);
+            }
+            let current = this.head;
+            if (!this.head) {
+                return false;
+            }
+            while (current.next) {
 
-        let current = this.head;
-        if (!this.head) {
+                if (current.value == value) {
+                    return true;
+                }
+
+                current = current.next;
+
+                if ((current.next == null) && (value == current.value)) {
+                    return true;
+                }
+            }
             return false;
+        } catch (e) {
+            console.error(e);
         }
-        while (current.next) {
-            if (current.value == value) {
-                return true;
-            }
-            current = current.next;
-            if ((current.next == null) && (value == current.value)) {
-                return true;
-            }
-        }
-        return false;
     }
     toString() {
         let outPut = '';
         let current = this.head;
-        try {
-
-            while (current.next) {
-                if (current.value == null || current.value == undefined) {
-                    outPut = outPut + `NULL -> `;
-                } else {
-                    outPut = outPut + `{${current.value}} -> `;
-                }
-                current = current.next;
-                if (current.next == null) {
-                    outPut = outPut + `{${current.value}}`;
-                }
+        while (current.next) {
+            if (current.value == null) {
+                outPut = outPut + `NULL -> `;
+            } else {
+                outPut = outPut + `{${current.value}} -> `;
             }
-            return outPut;
-        } catch (e) {
-            console.log('error...');
+            current = current.next;
+            if (current.next == null) {
+                outPut = outPut + `{${current.value}}`;
+            }
         }
+        return outPut;
+
+        
     }
     append(value) {
         this.counter = this.counter + 1;
-        let addNode = new Node(value);
+        let node1 = new Node(value);
         if (!this.head) {
-            this.head = addNode;
+            this.head = node1;
+            this.rear = node1;
         } else {
-            let currnt = this.head;
-            while (currnt.next) {
-                currnt = currnt.next;
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
             }
-            currnt.next = addNode
+            current.next = node1;
+            this.rear = node1;
         }
     }
-
     insertAfter(newValue, value) {
         this.counter = this.counter + 1;
-        let addNew = new Node(newValue);
+        let node1 = new Node(newValue);
         let current = this.head;
+
         while (current) {
             if (current.value == value) {
-                addNew.next = current.next;
-                current.next = addNew;
+                if (current.next == null) {
+                    this.rear = node1;
+                }
+                node1.next = current.next;
+                current.next = node1;
                 break;
             }
-            console.log(current.value);
             current = current.next;
+
         }
     }
-
     insertBefore(newValue, value) {
         this.counter = this.counter + 1;
-        let addNew = new Node(newValue);
+        let node1 = new Node(newValue);
         let current = this.head;
         if (value == this.head.value) {
-            addNew.next = this.head;
-            this.head = addNew;
+            node1.next = this.head;
+            this.head = node1;
         } else {
             while (current) {
                 if (current.next.value == value) {
-                    addNew.next = current.next;
-                    current.next = addNew;
+                    node1.next = current.next;
+                    current.next = node1;
                     break;
                 }
-                console.log(current.value);
                 current = current.next;
+
             }
         }
     }
@@ -125,60 +144,21 @@ class LinkedList {
 
 
 }
-function linkedListzip(list1, list2) {
-    let hand1 = list1.head;
-    let hand2 = list2.head;
-    let ll3 = new LinkedList();
-    while (hand1 || hand2) {
-        if (hand1 != null) {
-            ll3.append(hand1.value);
-            hand1 = hand1.next;
+
+function alternative(list1, list2) {
+    let current1 = list1.head;
+    let current2 = list2.head;
+    let list3 = new LinkedList();
+    while (current1 || current2) {
+        if (current1 != null) {
+            list3.append(current1.value);
+            current1 = current1.next;
         }
-        if (hand2 != null) {
-            ll3.append(hand2.value);
-            hand2 = hand2.next;
+        if (current2 != null) {
+            list3.append(current2.value);
+            current2 = current2.next;
         }
     }
-    return ll3.toString();
+    return (list3.toString());
 }
-
-function palindrome(list) {
-    let curr = list.head;
-    let string1 = '';
-    let string2 = '';
-    let cnt = 0;
-    while (curr) {
-        cnt = cnt + 1;
-        string1 = string1 + `${curr.value}`;
-        curr = curr.next;
-    }
-    for (let i = cnt - 1; i > -1; i--) {
-        string2 = string2 + string1[i];
-    }
-    if (string1 == string2) {
-        return true;
-    } else {
-        return false
-    }
-}
-
-
-function reverselink(list) {
-    let curr = list.head;
-    let nextguy;
-    let prev = null;
-    while (curr) {
-        nextguy = curr.next;
-        curr.next = prev;
-        prev = curr;
-        curr = nextguy;
-    }
-    list.head = prev;
-    return list;
-}
-
-
-
-module.exports = { LinkedList, linkedListzip };
-
 
