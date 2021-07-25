@@ -4,7 +4,7 @@
 
 ## Challenge
 
-**first time  to deal with tree**
+**first time  to deal with tree .**
 
 
 
@@ -16,4 +16,10 @@
 
 - **In-order:** *Left –> Root –> Right*
 
+
+
+
+
 - **Post-order:** *Left –> Right –> Root*
+
+![code challenge 16](./code16.png)

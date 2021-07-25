@@ -4,7 +4,7 @@ const alternative = require('../index').alternative;
 // Require our linked list implementation
 const LinkedList = require('../index').LinkedList;
 
-describe('checks if it includes a value',()=>{
+xdescribe('checks if it includes a value',()=>{
   test('insert',()=>{
     let ll = new LinkedList();
     expect(ll.head).toBe(null);
@@ -127,7 +127,7 @@ describe('checks if it includes a value',()=>{
     });
 
 })
-describe('linked list zip',()=>{
+xdescribe('linked list zip',()=>{
   const list1 = new LinkedList();
   const list2 = new LinkedList();
   for(let i=0;i<5;i++){
