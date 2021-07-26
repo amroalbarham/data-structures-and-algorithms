@@ -16,10 +16,7 @@
 
 - **In-order:** *Left –> Root –> Right*
 
-
-
-
-
 - **Post-order:** *Left –> Right –> Root*
 
-![code challenge 16](./code16.png)
+
+![code challenge 16](./code17.png)

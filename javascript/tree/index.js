@@ -90,15 +90,15 @@ class BinaryAddSearchTree extends BinaryTree {
   }
 
 
-search(value){
- let orderList= tree.inOrder()
- if(orderList.includes(value)){
-   return true;
- }
- else{
-   return false
- }
-}
+  search(value) {
+    let orderList = tree.inOrder()
+    if (orderList.includes(value)) {
+      return true;
+    }
+    else {
+      return false
+    }
+  }
 
 }
 let tree = new BinaryAddSearchTree();
@@ -112,10 +112,32 @@ tree.add(12);
 tree.add(3);
 tree.add(1);
 console.log(tree.inOrder());
-tree.search(1)
+tree.search(1);
 
 
-module.exports = { Node, BinaryTree, BinaryAddSearchTree }
+function treeBreadthFirst(tree) {
+  let node = tree.root;
+  if (node === null) {
+    return 'Empty Tree...';
+  }
+  let store = [];
+  let final = [];
+  store.push(node);
+  while (store.length > 0) {
+    let currentNode = store[0];
+    if (currentNode.left !== null) {
+      store.push(currentNode.left)
+    }
+    if (currentNode.right !== null) {
+      store.push(currentNode.right)
+    }
+    final.push(store.shift().value)
+  }
+  return final;
+}
+
+
+module.exports = { Node, BinaryTree, BinaryAddSearchTree,treeBreadthFirst }
 
 
 
