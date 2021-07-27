@@ -18,5 +18,7 @@
 
 - **Post-order:** *Left –> Right –> Root*
 
+*we work as group and i take idea from saeed*
 
-![code challenge 16](./code17.png)
+
+![code challenge 16](./code18.png)
