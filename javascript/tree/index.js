@@ -135,9 +135,28 @@ function treeBreadthFirst(tree) {
   }
   return final;
 }
+function deleteK(list, k) {
+  let curr = list.head;
+  let dell;
+  let count = 0;
+  let temp;
+  while (curr) {
+    if (count == k) {
+      dell = list.head;
+    } else if (dell && dell.value) {
+      dell = dell.next;
+    }
+    curr = curr.next;
+    count++;
+  }
+  temp = dell.next;
+  dell.next = dell.next.next;
+  temp.next = null;
+  return list;
+}
 
 
-module.exports = { Node, BinaryTree, BinaryAddSearchTree,treeBreadthFirst }
+module.exports = { Node, BinaryTree, BinaryAddSearchTree, treeBreadthFirst }
 
 
 
