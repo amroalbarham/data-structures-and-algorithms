@@ -34,5 +34,9 @@
 
   *Returns: Index in the collection for that key*
 
+### UML
+
+![code-31](./code-31.png)
+
 
   
