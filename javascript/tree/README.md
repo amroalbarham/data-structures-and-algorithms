@@ -1,24 +1,7 @@
 # Trees
 
-**Tree data structures have many uses, and it’s good to have a basic understanding of how they work. Trees are the basis for other very used data structures like Maps and Sets. Also, they are used on databases to perform quick searches. The HTML DOM uses a tree data structure to represents the hierarchy of elements.**
-
-## Challenge
-
-**first time  to deal with tree .**
+**Utilize the Single-responsibility principle: any methods you write should be clean, reusable, abstract component parts to the whole challenge. You will be given feedback and marked down if you attempt to define a large, complex algorithm in one function definition.**
 
 
 
-
-## API
-
-
-- **Pre-order:** *Root –> Left –> Right*
-
-- **In-order:** *Left –> Root –> Right*
-
-- **Post-order:** *Left –> Right –> Root*
-
-*we work as group and i take idea from saeed*
-
-
-![code challenge 16](./code18.png)
+![code challenge 32](./code32.png)
