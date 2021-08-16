@@ -77,9 +77,9 @@ class Hashmap {
     }
   }
 }
-function repeatedWord(string) {
-  let hashTable = new Hashmap(4000);
 
+function repeatedWord(string) {
+  let hashTable = new Hashmap(4000);  
   let keys = string.toLowerCase().split(',').join('').split(' ');
   for (let i = 0; i < keys.length; i++) {
     if (hashTable.contains(keys[i])) {
@@ -92,4 +92,6 @@ function repeatedWord(string) {
 }
 
 
-module.exports = { Node, LinkedList, Hashmap, repeatedWord }
+
+
+module.exports = { Node, LinkedList, Hashmap, repeatedWord  }

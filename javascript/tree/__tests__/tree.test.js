@@ -2,6 +2,7 @@
 const Node = require('../index').Node;
 const BinaryTree = require('../index').BinaryTree;
 const BinaryAddSearchTree = require('../index').BinaryAddSearchTree;
+const intersection = require('../index').intersection;
 
 describe('tree test',()=>{
     test('Can successfully instantiate an empty tree',()=>{
@@ -62,5 +63,65 @@ describe('tree test',()=>{
         tree.add(13);
         tree.add(12);
         expect(tree.postOrder()).toEqual([7,5,12,13,20,15,10]);
+    })
+})
+
+describe('gets the common  values ', () => {
+    test('gets the common  values', () => {
+        let tree1 = new BinaryAddSearchTree();
+        let tree2 = new BinaryAddSearchTree();
+        tree1.add(10);
+        tree1.add(5);
+        tree1.add(3);
+        tree1.add(7);
+        tree1.add(15);
+        tree1.add(13);
+        tree1.add(17);
+        tree2.add(10);
+        tree2.add(5);
+        tree2.add(3);
+        tree2.add(7);
+        tree2.add(15);
+        tree2.add(13);
+        tree2.add(17);
+        expect(intersection(tree1, tree2)).toEqual([10, 5,3, 7, 15, 13, 17]);
+    })
+    test('gets the common  values', () => {
+        let tree1 = new BinaryAddSearchTree();
+        let tree2 = new BinaryAddSearchTree();
+        tree1.add(10);
+        tree1.add(5);
+        tree1.add(3);
+        tree1.add(7);
+        tree1.add(15);
+        tree1.add(13);
+        tree1.add(5);
+        tree2.add(10);
+        tree2.add(5);
+        tree2.add(3);
+        tree2.add(7);
+        tree2.add(15);
+        tree2.add(13);
+        tree2.add(17);
+        expect(intersection(tree1, tree2)).toEqual([10, 5,3, 7, 15, 13]);
+    })
+    test('gets the common  values', () => {
+        let tree1 = new BinaryAddSearchTree();
+        let tree2 = new BinaryAddSearchTree();
+        tree1.add(10);
+        tree1.add(5);
+        tree1.add(3);
+        tree1.add(7);
+        tree1.add(15);
+        tree1.add(13);
+        tree1.add(5);
+        tree2.add(0);
+        tree2.add(0);
+        tree2.add(0);
+        tree2.add(0);
+        tree2.add(0);
+        tree2.add(0);
+        tree2.add(0);
+        expect(intersection(tree1, tree2)).toEqual([]);
     })
 })
