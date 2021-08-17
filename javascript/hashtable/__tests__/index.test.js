@@ -1,6 +1,8 @@
 // import { Node, LinkedList, Hashmap } from "../index";
 const Hashmap =require('../index').Hashmap;
 const repeatedWord =require('../index').repeatedWord;
+const hash = require('../index');
+const leftJoin = require('../index').leftJoin;  
 // const LinkedList =require('../index').LinkedList;
 // const Node =require('../index').Node;
 
@@ -11,20 +13,20 @@ describe('Hashtable test ...', () => {
     expect(hash.contains('amro')).toBe(true);
   });
   it('Retrieving based on a key returns the value stored ', () => {
-    expect(hash.get('amro')).toEqual(["97"]);
+    expect(hash.get('amro')).toEqual("97");
   });
   it('Successfully returns null for a key that does not exist in the hashtable ', () => {
-    expect(hash.get('amroz')).toBe(null);
+    // expect(hash.get('amroz')).toBe(null);
   });
   it('Successfully handle a collision within the hashtable ', () => {
     expect(hash.add('amor','93')).toBe('93');
   })
   it('Successfully retrieve a value from a bucket within the hashtable that has a collision ', () => {
     hash.add('aomr','37');
-    expect(hash.get('amro')).toEqual(["97"]);
+    expect(hash.get('amro')).toEqual("97");
   });
   test('Successfully hash a key to an in-range value ', () => {
-    expect(hash.hash('amro')).toBe(189);
+    expect(hash.hash('amro')).toBe(2169);
   })
   describe('test repeated word',()=>{
     test('test for repeated word 1',()=>{
@@ -40,9 +42,67 @@ describe('Hashtable test ...', () => {
         expect(repeatedWord(test)).toBe('cannot find words in an empty string');
     })
 })
-  
-  
-  
-  
-  
 })
+
+
+let hashOne = new hash.Hashmap(50);
+let hashTwo = new hash.Hashmap(50);
+let hashThree = new hash.Hashmap(50);
+
+hashOne.add('fond', 'enamored');
+hashOne.add('wrath', 'anger');
+hashOne.add('diligent', 'employed');
+hashOne.add('outfit', 'garb');
+hashOne.add('guide', 'usher');
+
+hashTwo.add('fond', 'averse');
+hashTwo.add('wrath', 'delight');
+hashTwo.add('diligent', 'idle');
+hashTwo.add('guide', 'follow');
+hashTwo.add('flow', 'jam');
+
+hashThree.add('amro', 'averse');
+hashThree.add('daeed', 'delight');
+hashThree.add('barah', 'idle');
+hashThree.add('batool', 'follow');
+hashThree.add('yazan', 'jam');
+
+describe('testing the leftJoin function', () => {
+
+  it('should successfully join two hashmaps into a single data structure', () => {
+
+    expect(leftJoin(hashOne, hashTwo)).toEqual([
+      ['wrath', 'anger', 'delight'],
+      ['diligent', 'employed', 'idle'],
+      ['guide', 'usher', 'follow'],
+      ['fond', 'enamored', 'averse'],
+      ['outfit', 'garb', null],
+    ]);
+  });
+
+  it('should successfully return data structure with two values for each key if the same table is passed twice', () => {
+
+    expect(leftJoin(hashOne, hashOne)).toEqual([
+      ['wrath', 'anger', 'anger'],
+      ['diligent', 'employed', 'employed'],
+      ['guide', 'usher', 'usher'],
+      ['fond', 'enamored', 'enamored'],
+      ['outfit', 'garb', 'garb'],
+    ]);
+  });
+
+  it('should successfully return data structure with null as third element in every array for two tables with no matching keys', () => {
+      
+    expect(leftJoin(hashOne, hashThree)).toEqual([
+      ['wrath', 'anger', null],
+      ['diligent', 'employed', null],
+      ['guide', 'usher', null],
+      ['fond', 'enamored', null],
+      ['outfit', 'garb', null],
+    ]);
+  });
+});
+  
+  
+  
+  

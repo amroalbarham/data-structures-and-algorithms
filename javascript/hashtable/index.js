@@ -41,14 +41,15 @@ class Hashmap {
     const sumCharCode = key.split('').reduce((acc, char) => {
       return acc + char.charCodeAt(0);
     }, 0);
-    const hashKey = (sumCharCode * 19) % this.size;
+    const hashKey = (sumCharCode * 599) % this.size;
     return hashKey;
   }
+
 
   add(key, value) {
     // get an index
     const hash = this.hash(key);
-    console.log('Key', hash);
+    // console.log('Key', hash);
     // we need to check if a value already exist in the index
     if (!this.storage[hash]) {
       const ll = new LinkedList();
@@ -59,13 +60,41 @@ class Hashmap {
       return this.storage[hash].head.value[key];
     }
   }
+  // add(key, value) {
+  //   let hash = this.hash(key); // index of our bucket
+
+  //   if (!this.storage[hash]) {
+  //     this.storage[hash] = new LinkedList();
+  //   }
+
+  //   let data = { [key]: value };
+  //   this.storage[hash].prepend(data);
+  // }
+
+
+  // get(key) {
+  //   const hash = this.hash(key);
+  //   if (this.storage[hash]) {
+  //     let values = this.storage[hash].getValue(key);
+  //     return values;
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
   get(key) {
-    const hash = this.hash(key);
-    if (this.storage[hash]) {
-      let values = this.storage[hash].getValue(key);
-      return values;
-    } else {
-      return null;
+    let hash = this.hash(key);
+    let bucket = this.storage[hash];
+    let current = bucket.head;
+
+    while (current) {
+      if (current.value[key]) {
+        return current.value[key];
+      } else if (current.next === null) {
+        return null;
+      } else {
+        current = current.next;
+      }
     }
   }
   contains(key) {
@@ -79,7 +108,7 @@ class Hashmap {
 }
 
 function repeatedWord(string) {
-  let hashTable = new Hashmap(4000);  
+  let hashTable = new Hashmap(4000);
   let keys = string.toLowerCase().split(',').join('').split(' ');
   for (let i = 0; i < keys.length; i++) {
     if (hashTable.contains(keys[i])) {
@@ -92,6 +121,26 @@ function repeatedWord(string) {
 }
 
 
+function leftJoin(map1, map2) {
+
+  let firstArray = [];
+  for (let i = 0; i < map1.storage.length; i++) {
+    let secondArray = [];
+    if (map1.storage[i] !== undefined) {
+      let key = (Object.keys(map1.storage[i].head.value)[0]);
+      secondArray.push(key);
+      secondArray.push(map1.storage[i].head.value[key]);
+      if (map2.contains(key)) {
+        secondArray.push(map2.get(key));
+      } else {
+        secondArray.push(null);
+      }
+      firstArray.push(secondArray);
+    }
+  }
+  return firstArray;
+}
 
 
-module.exports = { Node, LinkedList, Hashmap, repeatedWord  }
+
+module.exports = { Node, LinkedList, Hashmap, repeatedWord, leftJoin }
